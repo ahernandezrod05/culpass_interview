@@ -1,21 +1,27 @@
-// TODO: Implement all user service functions using Axios
+import api from "./api";
+import { User } from "../types/user"; // assuming you have a shared User type
 
 export const getUsers = async () => {
-  // TODO: Fetch all users from the backend
+  const response = await api.get<User[]>("/users");
+  return response.data;
 };
 
-export const getUser = async () => {
-  // TODO: Fetch a single user by id
+export const getUser = async (id: number) => {
+  const response = await api.get<User>(`/users/${id}`);
+  return response.data;
 };
 
-export const createUser = async () => {
-  // TODO: Create a new user
+export const createUser = async (user: Omit<User, "id">) => {
+  const response = await api.post<User>("/users", user);
+  return response.data;
 };
 
-export const updateUser = async () => {
-  // TODO: Update a user by id
+export const updateUser = async (id: number, user: Partial<User>) => {
+  const response = await api.put<User>(`/users/${id}`, user);
+  return response.data;
 };
 
-export const deleteUser = async () => {
-  // TODO: Delete a user by id
+export const deleteUser = async (id: number) => {
+  const response = await api.delete(`/users/${id}`);
+  return response.data;
 };

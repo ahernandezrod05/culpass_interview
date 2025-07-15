@@ -6,18 +6,20 @@ const app = Fastify();
 
 app.register(cors, {
   origin: "*",
-  // TODO: add more specific CORS settings for production (methods, headers, etc.)
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 });
 
 app.register(userRoutes, { prefix: "/users" });
 
 const start = async () => {
   try {
-    // TODO: Start the Fastify server on port 3001
+    await app.listen({ port: 3001 });
+    console.log("Server running at http://localhost:3001");
   } catch (err) {
     app.log.error(err);
     process.exit(1);
   }
 };
 
-// TODO: Start the server
+start();

@@ -1,12 +1,16 @@
-// TODO: Implement the user list page.
-// - Fetch users from the backend
-// - Display them in a card format
-// - You may add a loading state
+import { User } from "../types/user";
+import { UserCard } from "./UserCard";
+interface UserGridProps {
+  users: User[];
+  className?: string;
+}
 
-export default function UserList() {
+export default function UserList({ users, className = "" }: UserGridProps) {
   return (
-    <ul className="">
-      {/* TODO: Render users here */}
-    </ul>
-  )
+    <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${className}`}>
+      {users.map((user) => (
+        <UserCard key={user.id} user={user} />
+      ))}
+    </div>
+  );
 }

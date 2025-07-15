@@ -1,6 +1,5 @@
-// TODO: Implement a form to create a user with the following fields: name, email, age. Use the `Button` component for submission.
-// Hint: You should do this in a client component.
+import { CreateUserForm } from "./client/CreateUserForm";
 
 export default function Page() {
-  return;
+  return <CreateUserForm />;
 }

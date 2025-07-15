@@ -1,15 +1,10 @@
-// TODO: Define the User interface. It should have the following properties: id, name, email, age
-
-export interface TODO {
-  exampleNumber: number;
-  // (...)
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
 }
 
-// TODO: Create an array to store users here.
-
-let users: TODO[] = [
-  { exampleNumber: 1 /* (...) */ },
-  // (...)
-];
+let users: User[] = [];
 
 export default users;

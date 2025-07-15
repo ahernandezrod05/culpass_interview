@@ -1,14 +1,22 @@
-// TODO: Remember to use the reusable AppButton for navigation/actions
+export const dynamic = "force-dynamic";
 
-const IndexPage = () => {
+import AppButton from "./components/Button";
+import UserList from "./components/UserList";
+import { getUsers } from "./services/user";
+
+export default async function IndexPage() {
+  const users = await getUsers();
+
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <div className="">
-        <h1 className="">Culpass Users</h1>
+    <div className="p-6 max-w-4xl mx-auto">
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-2xl font-semibold text-gray-900">Culpass Users</h1>
+        <AppButton color="blue" navigation="/users/create">
+          New User
+        </AppButton>
       </div>
-      {/* TODO: User list goes here */}
+
+      <UserList users={users} />
     </div>
   );
-};
-
-export default IndexPage;
+}
